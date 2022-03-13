@@ -1,7 +1,7 @@
 public class Cat {
 
-    private String catName;
-    private String catGender;
+    String catName;
+    String catGender;
 
     public void setCatName(String catName){
         this.catName = catName;

@@ -1,0 +1,9 @@
+create table studentScoreManagement(
+    student_no int not null auto_increment,
+    name varchar(50) not null,
+    korean int not null,
+    english int not null,
+    mathematics int not null,
+    average float not null,
+    primary key(student_no)
+);

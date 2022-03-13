@@ -78,4 +78,21 @@ public class Bank11n37thController {
 
         return "/37th/member/success";
     }
+
+    @GetMapping("/login")
+    public String loginForm (MemberManagementSystem memberManagementSystem) {
+        log.info("loginForm()");
+
+        return "/37th/member/login";
+    }
+
+    @PostMapping("/login")
+    public String login (MemberManagementSystem memberManagementSystem, Model model) {
+        log.info("login: " + memberManagementSystem);
+
+        System.out.println("Login res: " + memberManagementSystemService.login(memberManagementSystem));
+
+        return "/37th/member/success";
+    }
+
 }

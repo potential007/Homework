@@ -1,0 +1,10 @@
+create table memberManagementSystem(
+    member_no int not null auto_increment,
+    id varchar(50) not null,
+    password varchar(50) not null,
+    name varchar(50) not null,
+    age int not null,
+    gender varchar(25),
+    phoneNumber varchar(50) not null,
+    primary key(member_no)
+);

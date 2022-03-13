@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>등록된 학생 리스트 보기</h2>
+    <a th:href="@{/44th/student/register}">학생 등록</a>
+    <table border="1">
+        <tr>
+            <th align="center" width="50">학번</th>
+            <th align="center" width="200">이름</th>
+            <th align="center" width="50">국어</th>
+            <th align="center" width="50">영어</th>
+            <th align="center" width="50">수학</th>
+            <th align="center" width="50">평균</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(list)}">
+            <td colspan="6">
+                현재 등록된 학생이 없습니다!
+            </td>
+
+        </tr>
+
+        <tr th:each="studentScoreManagement : ${list}">
+            <td align="center" th:text="${studentScoreManagement.studentNo}">
+            </td>
+            <td align="center" th:text="${studentScoreManagement.name}">
+
+            <td align="center" th:text="${studentScoreManagement.korean}">
+            </td>
+            <td align="center" th:text="${studentScoreManagement.english}">
+            </td>
+            <td align="center" th:text="${studentScoreManagement.mathematics}">
+            </td>
+            </td>
+            <td align="center" th:text="${studentScoreManagement.average}">
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

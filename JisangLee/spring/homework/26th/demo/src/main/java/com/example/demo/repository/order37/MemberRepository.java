@@ -90,4 +90,27 @@ public class MemberRepository {
 
         jdbcTemplate.update(query, memberManagementSystem.getName(), memberManagementSystem.getAge(), memberManagementSystem.getGender(), memberManagementSystem.getPhoneNumber(), memberManagementSystem.getMemberNo());
     }
+
+    public MemberManagementSystem findMemberManagementSystemById(MemberManagementSystem memberManagementSystem) {
+        List<MemberManagementSystem> results = jdbcTemplate.query(
+                "select * from member where id = ?",
+
+                new RowMapper<MemberManagementSystem>() {
+                    @SneakyThrows
+                    @Override
+                    public MemberManagementSystem mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        MemberManagementSystem memberManagementSystem = new MemberManagementSystem();
+
+                        memberManagementSystem.setPassword(rs.getString("pw"));
+
+                        return memberManagementSystem;
+                    }
+                }, memberManagementSystem.getId()
+        );
+
+        return results.isEmpty() ? null : results.get(0);
+    }
+
+
 }
+

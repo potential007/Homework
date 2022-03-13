@@ -1,16 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var formObj = $("#memberManagementSystem");
+
+        $("#btnLogin").on("click", function() {
+            formObj.attr("action", "/37th/member/login");
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+
+        $("#btnList").on("click", function() {
+            self.location = "/37th/member/list";
+        });
+    });
+</script>
 
 <body>
-<h2>--------로그인--------</h2>
-<form method="post" action="/37th/member/login">
-       ID    :<input type="text" name="id"><br>
-    PASSWORD :<input type="password" name="password"><br>
-    <button type="submit">제출</button>
+<h2>중국인민 로그인</h2>
+
+<form id="memberManagementSystem" th:object="${memberManagementSystem}">
+    <table>
+        <tr>
+            <td>아 이 디</td>
+            <td>
+                <input type="text" name="id" th:field="*{id}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td>
+                <input type="password" name="password" th:field="*{password}"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<div>
+    <button type="submit" id="btnLogin">로그인</button>
+    <button type="submit" id="btnList">돌아가기</button>
+</div>
 </form>
 </body>
 </html>

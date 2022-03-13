@@ -14,7 +14,7 @@ public class MemberManagementSystemServiceImpl implements MemberManagementSystem
     MemberRepository repository;
 
     @Override
-    public void join(MemberManagementSystem memberManagementSystem){
+    public void join(MemberManagementSystem memberManagementSystem) {
         repository.create(memberManagementSystem);
     }
 
@@ -37,5 +37,19 @@ public class MemberManagementSystemServiceImpl implements MemberManagementSystem
     public void remove(Integer memberNo) {
         repository.delete(memberNo);
 
+    }
+    @Override
+    public Boolean login(MemberManagementSystem memberManagementSystem) {
+        MemberManagementSystem findMemberManagementSystem = repository.findMemberManagementSystemById(memberManagementSystem);
+
+        if (findMemberManagementSystem == null){
+            System.out.printf("There are no %s id\n",memberManagementSystem.getId());
+            return false;
+        }
+
+        System.out.println("Check Password Only: " + findMemberManagementSystem);
+        Boolean loginSuccess = findMemberManagementSystem.getPassword().equals(memberManagementSystem.getPassword());
+
+        return loginSuccess;
     }
 }

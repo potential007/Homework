@@ -14,6 +14,7 @@ public interface MemberManagementSystemService {
     public void modify(MemberManagementSystem memberManagementSystem);
 
     public void remove(Integer memberNo);
+    public Boolean login(MemberManagementSystem memberManagementSystem);
 
 }
 
